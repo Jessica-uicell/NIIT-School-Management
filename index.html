@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>School Management System</h1>
+        <div class="nav-links">
+            <button onclick="showSection('students')">Students</button>
+            <button onclick="showSection('courses')">Courses</button>
+            <button onclick="showSection('attendance')">Attendance</button>
+            <button onclick="showSection('dashboard')">Dashboard</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Student Registration Section -->
+        <section id="students" class="section">
+            <h2>Student Registration</h2>
+            <form id="studentForm">
+                <input type="text" id="studentName" placeholder="Name" required>
+                <input type="email" id="studentEmail" placeholder="Email" required>
+                <input type="text" id="studentProgram" placeholder="Program" required>
+                <input type="text" id="studentCourse" placeholder="Course" required>
+                <input type="tel" id="studentPhone" placeholder="Phone" required>
+                <button type="submit">Register Student</button>
+            </form>
+            <div id="studentsList">
+                <h3>Registered Students</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Program</th>
+                            <th>Course</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Course Management Section -->
+        <section id="courses" class="section hidden">
+            <h2>Course Management</h2>
+            <form id="courseForm">
+                <input type="text" id="courseName" placeholder="Course Name" required>
+                <input type="text" id="courseCode" placeholder="Course Code" required>
+                <button type="submit">Add Course</button>
+            </form>
+            <div id="coursesList">
+                <h3>Available Courses</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Course Code</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coursesTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Attendance Tracking Section -->
+        <section id="attendance" class="section hidden">
+            <h2>Attendance Tracking</h2>
+            <div class="attendance-controls">
+                <select id="courseSelect">
+                    <option value="">Select Course</option>
+                </select>
+                <input type="date" id="attendanceDate">
+            </div>
+            <div id="attendanceList">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Present</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTableBody"></tbody>
+                </table>
+                <button onclick="saveAttendance()">Save Attendance</button>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section id="dashboard" class="section hidden">
+            <h2>Admin Dashboard</h2>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <p id="10">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Courses</h3>
+                    <p id="3">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Today's Attendance</h3>
+                    <p id="0">0%</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
